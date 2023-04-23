@@ -13,6 +13,10 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
     <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 
+    <!--MiniMapa-->
+    <link rel="stylesheet" href="archivos/minimapa/Control.MiniMap.css" />
+    <script src="archivos/minimapa/Control.MiniMap.js" type="text/javascript"></script>
+
 
     <style>
         #map {
@@ -132,6 +136,18 @@
         };
 
         L.control.layers(baseMaps, overlayMaps, { collapsed: false }).addTo(map);
+
+        //MiniMapa
+
+        var osm2 = new L.TileLayer(
+            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a>'
+                + 'contributors',
+            minZoom: 0,
+            maxZoom: 13,
+        }
+        )
+        var miniMap = new L.Control.MiniMap(osm2, { toggleDisplay: true }).addTo(map);
 
     </script>
 
